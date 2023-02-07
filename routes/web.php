@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use TCG\Voyager\Facades\Voyager;
 
 /*
@@ -20,9 +21,8 @@ Route::get("/", function () {
     return Inertia::render("Index");
 })->name("index");
 
-Route::get("/test", function () {
-    dd("Hello");
-});
+Route::get("/test", [AuthenticatedSessionController::class, "destroy"]);
+
 
 //Route::get('/', function () {
 //    return Inertia::render('Welcome', [
@@ -42,7 +42,6 @@ Route::get("/test", function () {
 //        return Inertia::render('Dashboard');
 //    })->name('dashboard');
 //});
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
