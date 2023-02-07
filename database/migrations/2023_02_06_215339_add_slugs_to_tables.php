@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string("slug")->unique();
         });
 
-        Schema::table('status', function (Blueprint $table) {
+        Schema::table('statuses', function (Blueprint $table) {
             $table->string("slug")->unique();
         });
 
