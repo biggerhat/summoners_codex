@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 class Attribute extends Model {
@@ -15,5 +16,9 @@ class Attribute extends Model {
         static::saving(function ($model) {
             $model->slug = Str::slug($model->name);
         });
+    }
+
+    public function characters(): BelongsToMany {
+        return $this->belongsToMany(Character::class);
     }
 }

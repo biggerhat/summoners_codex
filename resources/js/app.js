@@ -3,6 +3,7 @@ import '../css/app.css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp, Head, Link } from '@inertiajs/vue3';
+import 'primeicons/primeicons.css';
 import PrimeVue from 'primevue/config';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
