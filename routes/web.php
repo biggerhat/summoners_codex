@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CharacterController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +23,12 @@ Route::get("/", function () {
 })->name("index");
 
 Route::get("/test", [AuthenticatedSessionController::class, "destroy"]);
+
+Route::prefix("characters")->name("characters.")->group(function () {
+    Route::get("/{character:slug}", [CharacterController::class, "view"])->name("view");
+    Route::get("/", [CharacterController::class, "index"])->name("index");
+
+});
 
 
 //Route::get('/', function () {
